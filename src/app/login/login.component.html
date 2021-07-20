@@ -1,21 +1,37 @@
 <section class="container">
-  <form class="form">
-    <img class="img" src="../../assets/img/logotipo-3A-Digitall.png" alt="Logo 3ADigitall">
+  <form class="form" (ngSubmit)="login()" #loginForm="ngForm">
+    <img
+      class="img"
+      src="../../assets/img/logotipo-3A-Digitall.png"
+      alt="Logo 3ADigitall"
+    />
     <div class="form-label">
       <label class="form-text">Usuário</label>
     </div>
     <div>
-      <input class="form-input" type="text" placeholder="Digite usuário">
+      <input class="form-input" type="text" placeholder="Nome do usuário" [(ngModel)]="usuario" name="usuario" #campoUsuario = "ngModel" required />
+
+      <app-mensagem *ngIf="campoUsuario.invalid && campoUsuario.touched" mensagem="Usuário obrigatório"></app-mensagem>
     </div>
     <div class="form-label">
       <label class="form-text">Senha</label>
     </div>
     <div>
-      <input class="form-input" type="text" placeholder="Digite senha">
+      <input class="form-input" type="password" placeholder="Digite senha" [(ngModel)]="senha" name="senha" #campoSenha = "ngModel" required />
+
+      <app-mensagem *ngIf="campoSenha.invalid && campoSenha.touched" mensagem="Senha obrigatória"></app-mensagem>
     </div>
     <a class="esqueci-senha" routerLink="/esqueciSenha">Esqueci senha</a>
-    <button class="btn-login" type="submit" routerLink="/home">Login</button>
-    <h2 class="h2">Ainda não possui conta?<button class="btn-cadastro" type="submit"
-        routerLink="/cadastro">Cadastre-se</button></h2>
+
+    <button class="btn-login" type="submit" [disabled]="loginForm.invalid">Login</button>
+    <h2 class="h2">
+      Ainda não possui conta?<button
+        class="btn-cadastro"
+        type="submit"
+        routerLink="/cadastro"
+      >
+        Cadastre-se
+      </button>
+    </h2>
   </form>
 </section>

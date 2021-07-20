@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { HomeComponent } from './home/home.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MensagemComponent } from './mensagem/mensagem.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +18,15 @@ import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
     CadastroComponent,
     HomeComponent,
     EsqueciSenhaComponent,
+    MensagemComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
+  exports: [ MensagemComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })
