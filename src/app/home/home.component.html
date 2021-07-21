@@ -1,5 +1,46 @@
+<label for="menu-hamburguer">
+    <div class="mburg">
+        <span class="hamburguer"></span>
+    </div>
+</label>
 <header>
     <a class="header" routerLink="/home">Home</a>
     <a class="header" routerLink="/login">Login</a>
     <a class="header" routerLink="/cadastro">Cadastro</a>
 </header>
+
+<header>
+    <!-- menu retrátil lateral esquerda -->
+    <input type="checkbox" id="check">
+    <label id="icone" for="check"></label>
+    <div class="barra">
+      <nav>
+        <a routerLink="/home">
+          <div class="Link">Home</div>
+        </a>
+        <a routerLink="/login">
+          <div class="Link">Login</div>
+        </a>
+        <a routerLink="/cadastro">
+          <div class="Link">Cadastro</div>
+        </a>
+        <a routerLink="/contato">
+          <div class="Link">Contato</div>
+        </a>
+        <a routerLink="/Sobre">
+          <div class="Link">Sobre</div>
+        </a>
+      </nav>
+    </div>
+    <!-- barra fixa azul horizontal -->
+    <nav class="menu"></nav>
+    <label for="menu-hamburguer">
+      <div class="mburg">
+        <span class="hamburguer"></span>
+      </div>
+    </label>
+  </header>
+
+<div class="img">
+    <img class="img-logo" src="../../assets/img/logotipo-3A-Digitall.png" alt="Logo 3ADigitall home">
+</div>

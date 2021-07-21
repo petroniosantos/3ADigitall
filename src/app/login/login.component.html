@@ -24,14 +24,7 @@
     <a class="esqueci-senha" routerLink="/esqueciSenha">Esqueci senha</a>
 
     <button class="btn-login" type="submit" [disabled]="loginForm.invalid">Login</button>
-    <h2 class="h2">
-      Ainda não possui conta?<button
-        class="btn-cadastro"
-        type="submit"
-        routerLink="/cadastro"
-      >
-        Cadastre-se
-      </button>
-    </h2>
+
+    <h2 class="h2">Ainda não possui conta?<button class="btn-cadastro" type="submit" [routerLink]="['/cadastro']">Cadastre-se</button></h2>
   </form>
 </section>

@@ -1,31 +1,121 @@
 <section class="container">
-    <form class="form">
-      <img class="img" src="../../assets/img/logotipo-3A-Digitall.png" alt="Logo 3ADigitall">
-      <div class="form-label">
-        <label class="form-text">Usuário</label>
-      </div>
-      <div>
-        <input class="form-input" type="text" placeholder="Digite usuário">
-      </div>
-      <div class="form-label">
-        <label class="form-text">E-mail</label>
-      </div>
-      <div>
-        <input class="form-input" type="email" placeholder="Digite e-mail">
-      </div>
-      <div class="form-label">
-        <label class="form-text">Senha</label>
-      </div>
-      <div>
-        <input class="form-input" type="text" placeholder="Digite senha">
-      </div>
-      <div class="form-label">
-        <label class="form-text">Confirmar Senha</label>
-      </div>
-      <div>
-        <input class="form-input" type="password" placeholder="Confirmar senha">
-      </div>
-      <button class="btn-cadastro" type="submit" routerLink="/home" >Cadastro</button>
-    </form>
-  </section>
-  
+  <form class="form" [formGroup]="cadastroForm" (submit)="cadastrar()">
+    <img
+      class="img"
+      src="../../assets/img/logotipo-3A-Digitall.png"
+      alt="Logo 3ADigitall"
+    />
+    <div class="form-label">
+      <label class="form-text">Usuário</label>
+    </div>
+    <div>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="Digite usuário"
+        formControlName="userName"
+      />
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('userName')?.errors?.minusculo &&
+          cadastroForm.get('userName')?.touched
+        "
+        mensagem="Usuário deve ser em letra minúscula"
+      ></app-mensagem>
+
+      <app-mensagem
+        *ngIf="cadastroForm.get('userName')?.errors?.cadastroExistente"
+        mensagem="Usuário já existe"
+      ></app-mensagem>
+    </div>
+    <div class="form-label">
+      <label class="form-text">E-mail</label>
+    </div>
+    <div>
+      <input
+        class="form-input"
+        type="email"
+        placeholder="Digite e-mail"
+        formControlName="email"
+      />
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('email')?.errors?.required &&
+          cadastroForm.get('email')?.touched
+        "
+        mensagem="E-mail obrigatório"
+      ></app-mensagem>
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('email')?.errors?.email &&
+          cadastroForm.get('email')?.touched
+        "
+        mensagem="E-mail no formato incorreto"
+      ></app-mensagem>
+    </div>
+    <div class="form-label">
+      <label class="form-text">Senha</label>
+    </div>
+    <div>
+      <input
+        class="form-input"
+        type="password"
+        placeholder="Digite senha"
+        formControlName="password"
+      />
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('password')?.errors?.required &&
+          cadastroForm.get('password')?.touched
+        "
+        mensagem="Senha obrigatório"
+      ></app-mensagem>
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('password')?.errors?.password &&
+          cadastroForm.get('password')?.touched
+        "
+        mensagem="Senha no formato incorreto"
+      ></app-mensagem>
+
+      <app-mensagem
+        *ngIf="cadastroForm.errors?.senhaIgualCadastro"
+        mensagem="Senha deve ser diferente do usuário"
+      ></app-mensagem>
+    </div>
+    <div class="form-label">
+      <label class="form-text">Confirmar Senha</label>
+    </div>
+    <div>
+      <input
+        class="form-input"
+        type="password"
+        placeholder="Confirmar senha"
+        formControlName="confirma_password"
+      />
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('confirma_password')?.errors?.required &&
+          cadastroForm.get('confirma_password')?.touched
+        "
+        mensagem="Confirmar senha obrigatório"
+      ></app-mensagem>
+
+      <app-mensagem
+        *ngIf="
+          cadastroForm.get('confirma_password')?.errors?.confirma_password &&
+          cadastroForm.get('confirma_password')?.touched
+        "
+        mensagem="Senha no formato incorreto"
+      ></app-mensagem>
+    </div>
+
+    <button class="btn-cadastro" type="submit">Cadastro</button>
+  </form>
+</section>
